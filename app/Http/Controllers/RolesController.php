@@ -11,7 +11,11 @@ class RolesController extends Controller
 {
     function __construct()
     {
-        //$this->middleware(['permission:create-role','permission:role-delete']);
+        $view = 'role-view'; $create = 'role-create'; $edit = 'role-edit';
+
+        $this->middleware('permission:'.$view, ['only' => ['index']]);
+        $this->middleware('permission:'.$create, ['only' => ['create', 'store']]);
+        $this->middleware('permission:'.$edit, ['only' => ['edit', 'update']]);
     }
     /**
      * Display a listing of the resource.

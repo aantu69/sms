@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
+    function __construct()
+    {
+        $view = 'user-view'; $create = 'user-create'; $edit = 'user-edit';
+
+        $this->middleware('permission:'.$view, ['only' => ['index']]);
+        $this->middleware('permission:'.$create, ['only' => ['create', 'store']]);
+        $this->middleware('permission:'.$edit, ['only' => ['edit', 'update']]);
+    }
     /**
      * Display a listing of the resource.
      *
