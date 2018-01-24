@@ -302,11 +302,14 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
+      @include('partials.errors')
+      @include('partials.success')
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        
         @yield('content')
       </div>
     </section>

@@ -76,7 +76,7 @@ class RolesController extends Controller
         $role = Role::find($role->id);
         $permissions = Permission::all();
         $role_permissions = $role->perms()->pluck('id','id')->toArray();
-         return view('admin.roles.edit', ['role'=> $role, 'role_permissions'=> $role_permissions, 'permissions'=> $permissions]);
+        return view('admin.roles.edit', ['role'=> $role, 'role_permissions'=> $role_permissions, 'permissions'=> $permissions]);
     }
 
     /**
@@ -100,7 +100,7 @@ class RolesController extends Controller
             }
         }
         
-        return redirect()->route('roles.index')->withMessage('Role Updated.');
+        return redirect()->route('roles.index')->with('success','Role Updated.');
     }
 
     /**
